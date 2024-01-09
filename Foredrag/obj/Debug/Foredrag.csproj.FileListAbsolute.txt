@@ -1,4 +1,3 @@
-C:\Users\lucpin\Desktop\P1 Opgaver\C# opgaver\Foredrag\Foredrag\bin\Debug\Foredrag.exe.config
 C:\Users\lucpin\Desktop\P1 Opgaver\C# opgaver\Foredrag\Foredrag\bin\Debug\Foredrag.exe
 C:\Users\lucpin\Desktop\P1 Opgaver\C# opgaver\Foredrag\Foredrag\bin\Debug\Foredrag.pdb
 C:\Users\lucpin\Desktop\P1 Opgaver\C# opgaver\Foredrag\Foredrag\obj\Debug\Foredrag.csproj.AssemblyReference.cache
