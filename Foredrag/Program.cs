@@ -94,7 +94,6 @@ class Program
                 Console.WriteLine($"ID:{login.ID}   Navn:{login.Navn}   Alder:{login.Alder}   Level:{login.Level}");
                 Console.WriteLine("\n1.Lave et foredrag");
                 Console.WriteLine("\n9.Exit");
-
                 try
                 {
                     chooseAdmin = Convert.ToInt32(Console.ReadLine());

@@ -16,10 +16,5 @@ namespace Foredrag_Login
         public string Alder { get; set; }
         public string InputID { get; set; }
         public string NavnInput { get; set; }
-
-        public static void LoginInfo()
-        {
-
-        }
     }
 }
