@@ -44,9 +44,9 @@ class Program
     public static void Main(string[] args)
 
     {
-
+        bool MenuLoop = true;
         bool LoginLoop = false;
-        bool MenuLoop = false;
+        
         Foredrag_Login.LoginMenu login = new Foredrag_Login.LoginMenu();
 
         login.FilePath = @"C:\Users\lucpin\Desktop\Foredrag\LoginKonto.txt";
@@ -86,9 +86,9 @@ class Program
             }
         }
         while (LoginLoop == false);
-        Console.Clear();
         do
         {
+            Console.Clear();
             if (login.Level == "2")
             {
                 Console.WriteLine($"ID:{login.ID}   Navn:{login.Navn}   Alder:{login.Alder}   Level:{login.Level}");
@@ -101,29 +101,24 @@ class Program
                 }
                 catch (Exception)
                 {
-                    Console.Clear();
+
                     Console.WriteLine("Skrive igen");
-                    Console.ReadKey();
-                    Console.Clear();
                 }
 
                 switch (chooseAdmin)
                 {
                     case 1:
-                        Console.Clear();
-                        Console.WriteLine($"ID:{login.ID}   Navn:{login.Navn}   Alder:{login.Alder}   Level:{login.Level}");
-
+                        Foredrag.LaveForedrag.ForedragLærer();
                         break;
                     case 9:
-                        MenuLoop = true;
+                        MenuLoop = false;
                         break;
                 }
 
             }
         }
-        while (MenuLoop == false);
-  
-
+        while (MenuLoop);
+        
         /*Console.WriteLine("Skrive dit foredrag");
            string foredrag = Console.ReadLine();
           
@@ -139,8 +134,9 @@ class Program
            list.ForedragList = foredrag.Information;
            listElev.ForedragListElev = foredrag.Information;*/
 
-        Console.ReadKey();
+       
         
     }
+    
 }
 
