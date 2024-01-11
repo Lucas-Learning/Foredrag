@@ -15,13 +15,11 @@ namespace Foredrag
             string Mikkel = "Mikkel",ForedragInput,LærerInput,data, Pernille = "Pernille", Alex = "Alex";
             StreamWriter writer = null;
             StreamReader reader = null;
-    
         bool Foredragloop = true;
-            Foredrag_Login.LoginMenu login = new Foredrag_Login.LoginMenu();
+            
             do
             {
-                Console.Clear();
-                Console.WriteLine($"ID:{login.ID}   Navn:{login.Navn}   Alder:{login.Alder}   Level:{login.Level}");
+                Console.Clear();           
                 Console.WriteLine("Skrive en af de lærer: Mikkel, Pernille, Alex");
                 LærerInput = Console.ReadLine();
 

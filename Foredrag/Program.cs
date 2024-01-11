@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace Foredrag_Opgave
+namespace Foredrag
 {
     /*public class Lokale
     {
@@ -41,57 +41,38 @@ class Program
     public string InputID { get; set; }
     public string NavnInput { get; set; }
     public static int chooseAdmin { get; set; }
+    public static int chooseElev { get; set; }
+    public bool whl { get; set; }
+    
+    
     public static void Main(string[] args)
 
     {
         bool MenuLoop = true;
         bool LoginLoop = false;
-        
-        Foredrag_Login.LoginMenu login = new Foredrag_Login.LoginMenu();
-
-        login.FilePath = @"C:\Users\lucpin\Desktop\Foredrag\LoginKonto.txt";
-
-        string[] lines = File.ReadAllLines(login.FilePath);
-
-        foreach (string line in lines)
-        {
-            string[] parts = line.Split(',');
-            if (parts.Length == 4)
-            {
-                login.ID = parts[0];
-                login.Navn = parts[1];
-                login.Alder = parts[2];
-                login.Level = parts[3];
-            }
-        }
         do
         {
+            
+            Console.Write("ID: ");
+            Foredrag.LoginMenu.InputID = Console.ReadLine();
+            Console.Write("Navn: ");
+            Foredrag.LoginMenu.NavnInput = Console.ReadLine();
+            Console.WriteLine("1");
 
-            Console.WriteLine("ID: ");
-            login.InputID = Console.ReadLine();
-            Console.WriteLine("Navn: ");
-            login.NavnInput = Console.ReadLine();
-
-            if (login.InputID == login.ID && login.NavnInput == login.Navn)
+            Login();
+            if (found)
             {
-                LoginLoop = true;
+                break;
             }
-            else
-            {
-                Console.WriteLine("Something is wrong");
-                Console.ReadKey();
-                Console.Clear();
-                
 
-            }
         }
         while (LoginLoop == false);
         do
         {
             Console.Clear();
-            if (login.Level == "2")
+            if (Foredrag.LoginMenu.Level == "2")
             {
-                Console.WriteLine($"ID:{login.ID}   Navn:{login.Navn}   Alder:{login.Alder}   Level:{login.Level}");
+                Console.WriteLine($"ID:{Foredrag.LoginMenu.ID}   Navn:{Foredrag.LoginMenu.Navn}   Alder:{Foredrag.LoginMenu.Alder}   Level:{Foredrag.LoginMenu.Level}");
                 Console.WriteLine("\n1.Lave et foredrag");
                 Console.WriteLine("\n9.Exit");
                 try
@@ -111,6 +92,18 @@ class Program
                         break;
                     case 9:
                         MenuLoop = false;
+                        break;
+                }
+                if(Foredrag.LoginMenu.Level == "1")
+                {
+                    Console.WriteLine($"ID:{Foredrag.LoginMenu.ID}   Navn:{Foredrag.LoginMenu.Navn}   Alder:{Foredrag.LoginMenu.Alder}   Level:{Foredrag.LoginMenu.Level}");
+                    Console.WriteLine("\n1.Se et foredrag");
+                    Console.WriteLine("\n9.Exit");
+                }
+                switch (chooseElev)
+                {
+                    case 1:
+
                         break;
                 }
 
@@ -136,6 +129,45 @@ class Program
        
         
     }
-    
+    public static bool found { get; set; }
+    public static void Login()
+    {
+        found = false;
+
+        Foredrag.LoginMenu.FilePath = @"C:\Users\lucpin\Desktop\Foredrag\LoginKonto.txt";
+        string[] lines = File.ReadAllLines(Foredrag.LoginMenu.FilePath);
+        
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(',');
+            if (parts.Length == 4)
+            {
+                //Console.WriteLine("2");
+                Foredrag.LoginMenu.ID = parts[0];
+                Foredrag.LoginMenu.Navn = parts[1];
+                Foredrag.LoginMenu.Alder = parts[2];
+                Foredrag.LoginMenu.Level = parts[3];
+                
+                
+
+
+                if (Foredrag.LoginMenu.InputID == Foredrag.LoginMenu.ID && Foredrag.LoginMenu.NavnInput == Foredrag.LoginMenu.Navn)
+                    {
+                       
+                        found = true;
+                        Console.ReadLine();
+                        return;
+                    } 
+            }
+        }
+        if (!found)
+        {
+            Console.WriteLine("Something is wrong");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        
+
+    }
 }
 
