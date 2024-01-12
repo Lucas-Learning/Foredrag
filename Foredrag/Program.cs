@@ -57,14 +57,11 @@ class Program
             Foredrag.LoginMenu.InputID = Console.ReadLine();
             Console.Write("Navn: ");
             Foredrag.LoginMenu.NavnInput = Console.ReadLine();
-            Console.WriteLine("1");
-
             Login();
             if (found)
             {
                 break;
             }
-
         }
         while (LoginLoop == false);
         do
@@ -94,19 +91,33 @@ class Program
                         MenuLoop = false;
                         break;
                 }
-                if(Foredrag.LoginMenu.Level == "1")
+               
+            }
+            if (Foredrag.LoginMenu.Level == "1")
+            {
+                Console.WriteLine($"ID:{Foredrag.LoginMenu.ID}   Navn:{Foredrag.LoginMenu.Navn}   Alder:{Foredrag.LoginMenu.Alder}   Level:{Foredrag.LoginMenu.Level}");
+                Console.WriteLine("\n1.Se et foredrag");
+                Console.WriteLine("\n9.Exit");
+            }
+            
+                try
                 {
-                    Console.WriteLine($"ID:{Foredrag.LoginMenu.ID}   Navn:{Foredrag.LoginMenu.Navn}   Alder:{Foredrag.LoginMenu.Alder}   Level:{Foredrag.LoginMenu.Level}");
-                    Console.WriteLine("\n1.Se et foredrag");
-                    Console.WriteLine("\n9.Exit");
+                    chooseElev = Convert.ToInt32(Console.ReadLine());
                 }
-                switch (chooseElev)
+                catch (Exception)
                 {
-                    case 1:
 
-                        break;
+                    Console.WriteLine("Skrive igen");
                 }
-
+            
+            switch (chooseElev)
+            {
+                case 1:
+                    Foredrag.SeForedrag.ForedragSe();
+                    break;
+                case 9:
+                    MenuLoop = false;
+                    break;
             }
         }
         while (MenuLoop);
@@ -142,18 +153,14 @@ class Program
             string[] parts = line.Split(',');
             if (parts.Length == 4)
             {
-                //Console.WriteLine("2");
+                
                 Foredrag.LoginMenu.ID = parts[0];
                 Foredrag.LoginMenu.Navn = parts[1];
                 Foredrag.LoginMenu.Alder = parts[2];
                 Foredrag.LoginMenu.Level = parts[3];
-                
-                
-
 
                 if (Foredrag.LoginMenu.InputID == Foredrag.LoginMenu.ID && Foredrag.LoginMenu.NavnInput == Foredrag.LoginMenu.Navn)
                     {
-                       
                         found = true;
                         Console.ReadLine();
                         return;
@@ -166,8 +173,6 @@ class Program
             Console.ReadKey();
             Console.Clear();
         }
-        
-
     }
 }
 
